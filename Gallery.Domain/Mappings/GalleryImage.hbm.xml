@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Gallery.Domain"
+                   namespace="Gallery.Domain.Entities">
+  <class name="GalleryImage" table="tb_images">
+    <id name="ImageID" type="long" unsaved-value="0">
+      <column name="image_id" sql-type="bigint" />
+      <generator class="identity" />
+    </id>
+    <property name="Url">
+      <column name="url" sql-type="nvarchar(1024)" not-null="true" />
+    </property>
+    <property name="Type">
+      <column name="img_type" not-null="true"/>
+    </property>
+    <property name="Title">
+      <column name="title" sql-type="nvarchar(100)" not-null="true" />
+    </property>
+    <property name="Description">
+      <column name="description" sql-type="nvarchar(1024)" />
+    </property>
+  </class>
+</hibernate-mapping>

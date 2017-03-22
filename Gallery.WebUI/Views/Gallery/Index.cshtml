@@ -1,0 +1,56 @@
+﻿
+@{
+    ViewBag.Title = "Gallery";
+}
+
+@section body{
+    <div class="query_panel">
+        <div class="container">
+            <div class="mod_filter">
+                <div class="filter_line">
+                    <span class="label">category:</span>
+                    <div class="filter_content">
+                        <button ng-repeat="m in category.items" ng-click="$parent.filterImage(m)" ng-class="{true:'btn-link item current', false:'btn-link item'}[m===category.current]">{{m}}</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mod_images">
+        <div class="container">
+            <div class="text-center">
+                <img src="~/Content/images/loading.gif" ng-show="loading" />
+            </div>
+            <div class="image_list">
+                <div class="image_list_bd">
+                    <div class="list_item" ng-repeat="m in images.Images">
+                        <div class="img_container">
+                            <a class="image-popup-vertical-fit" ng-href="{{m.Url}}" title="{{m.Description}}">
+                                <img ng-src="{{m.Url}}" title="{{m.Title}}" />
+                            </a>
+                            <div class="user_preference" ng-show="m.LikeType!==0">
+                                <img src="~/Content/images/heart.png" ng-show="m.LikeType===1" />
+                                <img src="~/Content/images/brokenheart.png" ng-show="m.LikeType===2" />
+                            </div>
+                        </div>
+                        <div class="m_title">
+                            <strong class="m_title_content">{{m.Title}}</strong>
+                        </div>
+                        <div class="m_description">
+                            <p>{{m.Description}}</p>
+                        </div>
+                        <div class="m_operation text-center">
+                            <a ng-click="setPreference(m, 1)" class="btn btn-success">Like</a>
+                            <a ng-click="setPreference(m, 0)" class="btn btn-primary">Dislike</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="image_page_info">
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,46 @@
+Answer One:
+
+select a.UserName, count(b.ID) as loginCount from [Users] a, [Users_AccessLog] b where (DATEADD(hour, 10, b.LoginDate) between '20150701' and '20150731') and b.UserId = a.Id group by a.UserName order by loginCount desc;
+
+Answer Two:
+
+SET IDENTITY_INSERT [dbo].[Users] ON
+
+insert into [dbo].[Users] ([Id], [UserName], [Password], [PasswordReminder], [PasswordEncryptType], [IsActive], [Created], [LastLogin], [OpenID], [UpdateCache], [RequirePasswordReset]) values (18886, N's18886', NULL, NULL, 0, 1, CAST(N'2017-03-22 07:19:12.020' AS DateTime), CAST(N'2017-03-22 07:20:12.020' AS DateTime), NULL, 1, 0)
+insert into [dbo].[JobSeekers] ([EntityId], [UserId], [FirstName], [LastName], [ContactDetailsId], [ExternalId], [IsProvisioned], [CardID], [IsDeceased], [AcceptedTermsDate], [PrimaryEmailID], [BackupEmailID]) values (41892, 18886, N'Marco', N'Zheng', 25145, N'626484157689', 0, NULL, 0, '20170322', 15080, 32007)
+insert into [dbo].[Users_Labels] values (18886, 151)
+insert into [dbo].[Users_AccessLog](Userid, LoginDate, IpAddress) VALUES (18886, '20170322', '192.168.0.2')
+
+SET IDENTITY_INSERT [dbo].[Users] OFF
+
+Email Response:
+
+Dear John Barama,
+
+Thank you for letting us know about your recent unhappy experience with CareerHub. 
+We apologize that our service did not meet your expectations.
+
+After receiving your email, we immediately looked into the issue you mentioned about.
+We found the delay may have been caused because of the automatic restriction system 
+set up by the third party service provider when we exceed the maximum number of emails sent. 
+Although the daily limit is reset every 24 hours, it still didn't finish sending all the mail on time. 
+
+We have communicated with the provider and asked them to increase the limit temporarily to ensure that 
+all mail is sent this week. Also,We have looked into this matter by considering increasing the daily 
+email maximum limit to avoid the similar issues happening again. However, the process may take up to 
+2 to 5 working days. Also, this kind of problems can be alerted before they are issues. Because we could
+not know the appropriate value for the limit, so if it is exceeded next time, we are afraid that you may pay 
+for the next upgrade.
+
+Again, we highly appreciate your feedback as it will assist us for improving our customer services. 
+It’s our responsibly to provide our customers with the satisfactory services so please for free to 
+contact us if you have any further questions.
+
+Kind Regards,
+
+John Smith
+Customer Care Manager, CareerHub
+M: 0444 555 666
+E:john.smith@carreerhub.com.au
+
+may alert

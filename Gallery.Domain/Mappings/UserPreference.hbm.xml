@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="Gallery.Domain"
+                   namespace="Gallery.Domain.Entities">
+  <class name="UserPreference" table="tb_user_prefer">
+    <id name="ID" type="long" unsaved-value="0">
+      <column name="id" sql-type="bigint" />
+      <generator class="identity" />
+    </id>
+    <property name="IsLiked">
+      <column name="isliked" />
+    </property>
+    <many-to-one class="User" name="User" column="user_id" not-null="true" />
+    <many-to-one class="GalleryImage" name="Image" column="image_id" not-null="true" />
+
+  </class>
+</hibernate-mapping>

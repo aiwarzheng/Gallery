@@ -1,0 +1,2 @@
+MSSQL Server version:2008 R2 Express
+testing data:images.sql

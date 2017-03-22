@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+  <session-factory name="NHibernate.Gallery">
+    <property name="connection.driver_class">NHibernate.Driver.Sql2008ClientDriver</property>
+    <property name="connection.connection_string">
+      Server=AIWARZHENG\SQLEXPRESS;Initial Catalog=gallery;Integrated Security=SSPI;
+    </property>
+    <property name="dialect">NHibernate.Dialect.MsSql2008Dialect</property>
+
+    <property name="current_session_context_class">thread</property>
+    <property name="hbm2ddl.auto">update</property>
+    <property name="format_sql">false</property>
+    <property name="show_sql">false</property>
+    
+  </session-factory>
+</hibernate-configuration>
