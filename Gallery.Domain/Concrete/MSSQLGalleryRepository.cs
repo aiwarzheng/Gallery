@@ -29,12 +29,17 @@ namespace Gallery.Domain.Concrete
                         .Where(m => m.ImageID == imageID).SingleOrDefault();
                     if(image != null)
                     {
-                        UserPreference p = new UserPreference
+                        UserPreference p = session.QueryOver<UserPreference>().Where(m=>m.Image.ImageID==imageID && m.User.UserID==u.UserID).SingleOrDefault();
+                        if (p == null)
                         {
-                            Image = image,
-                            IsLiked = like == 1 ? true : false,
-                            User = u
-                        };
+                            p = new UserPreference
+                            {
+                                Image = image,
+                                User = u
+                            };
+                        }
+
+                        p.IsLiked = like == 1 ? true : false;
 
                         using (ITransaction t = session.BeginTransaction())
                         {
